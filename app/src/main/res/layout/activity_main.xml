@@ -5,6 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/black"
     tools:context=".MainActivity"
     android:orientation="vertical">
 
@@ -16,6 +17,7 @@
             android:id="@+id/calculo_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textColor="@color/slate_gray"
             tools:text="10+5"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -28,6 +30,7 @@
             android:id="@+id/resultado_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textColor="@color/off_white"
             tools:text="15"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -37,4 +40,203 @@
             />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TableRow android:layout_weight="1">
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/ac_bt"
+                android:text="@string/ac"
+                android:background="@color/dark_slate_gray"
+                android:textColor="@color/off_white"
+                android:layout_margin="2dp"
+                android:layout_width="0dp"
+                android:layout_weight="2"
+                android:layout_height="match_parent"/>
+
+            <ImageButton
+                android:id="@+id/delete_bt"
+                android:src="@drawable/baseline_backspace_24"
+                android:background="@color/charcoal_gray"
+                android:contentDescription="@string/apagar_ultimo_digito"
+                android:textColor="@color/off_white"
+                android:layout_margin="2dp"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"/>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/divisao_bt"
+                android:text="@string/divisao"
+                android:background="@color/vibrant_orange"
+                android:textColor="@color/off_white"
+                android:layout_margin="2dp"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"/>
+        </TableRow>
+
+        <TableRow android:layout_weight="1">
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/sete_bt"
+                android:text="@string/sete"
+                android:background="@color/charcoal_gray"
+                android:textColor="@color/off_white"
+                android:layout_margin="2dp"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"/>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/oito_bt"
+                android:text="@string/oito"
+                android:background="@color/charcoal_gray"
+                android:textColor="@color/off_white"
+                android:layout_margin="2dp"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"/>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/nove_bt"
+                android:text="@string/nove"
+                android:background="@color/charcoal_gray"
+                android:textColor="@color/off_white"
+                android:layout_margin="2dp"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"/>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/multiplicacao_bt"
+                android:text="@string/multiplicacao"
+                android:background="@color/vibrant_orange"
+                android:textColor="@color/off_white"
+                android:layout_margin="2dp"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"/>
+        </TableRow>
+        <TableRow android:layout_weight="1">
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/quatro_bt"
+                android:text="@string/quatro"
+                android:background="@color/charcoal_gray"
+                android:textColor="@color/off_white"
+                android:layout_margin="2dp"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"/>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/cinco_bt"
+                android:text="@string/cinco"
+                android:background="@color/charcoal_gray"
+                android:textColor="@color/off_white"
+                android:layout_margin="2dp"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"/>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/seis_bt"
+                android:text="@string/seis"
+                android:background="@color/charcoal_gray"
+                android:textColor="@color/off_white"
+                android:layout_margin="2dp"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"/>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/subtracao_bt"
+                android:text="@string/subtracao"
+                android:background="@color/vibrant_orange"
+                android:textColor="@color/off_white"
+                android:layout_margin="2dp"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"/>
+        </TableRow>
+
+        <TableRow android:layout_weight="1">
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/um_bt"
+                android:text="@string/um"
+                android:background="@color/charcoal_gray"
+                android:textColor="@color/off_white"
+                android:layout_margin="2dp"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"/>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/dois_bt"
+                android:text="@string/dois"
+                android:background="@color/charcoal_gray"
+                android:textColor="@color/off_white"
+                android:layout_margin="2dp"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"/>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/tres_bt"
+                android:text="@string/tres"
+                android:background="@color/charcoal_gray"
+                android:textColor="@color/off_white"
+                android:layout_margin="2dp"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"/>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/soma_bt"
+                android:text="@string/soma"
+                android:background="@color/vibrant_orange"
+                android:textColor="@color/off_white"
+                android:layout_margin="2dp"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"/>
+        </TableRow>
+
+        <TableRow android:layout_weight="1">
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/ponto_bt"
+                android:text="@string/ponto"
+                android:background="@color/charcoal_gray"
+                android:textColor="@color/off_white"
+                android:layout_margin="2dp"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"/>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/zero_bt"
+                android:text="@string/zero"
+                android:background="@color/charcoal_gray"
+                android:textColor="@color/off_white"
+                android:layout_margin="2dp"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"/>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/resultado_bt"
+                android:text="@string/igual"
+                android:background="@color/vibrant_orange"
+                android:textColor="@color/off_white"
+                android:layout_margin="2dp"
+                android:layout_width="0dp"
+                android:layout_weight="2"
+                android:layout_height="match_parent"/>
+        </TableRow>
+
+
+    </TableLayout>
+
+
 </LinearLayout>
