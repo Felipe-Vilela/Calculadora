@@ -87,19 +87,23 @@ class MainActivity : AppCompatActivity() {
             }
 
             resultadoBt.setOnClickListener {
-                if (calculoTv.text.toString().endsWith("/0")){
-                    Toast.makeText(this@MainActivity, "Não é possível dividir por zero", Toast.LENGTH_LONG).show()
-                    calculoTv.text = ""
-                    resultadoTv.text = ""
-                }else{
-                    val resultadoCalculado = Expression(calculoTv.text.toString()).calculate()
-                    if(resultadoCalculado.isNaN()){
+                val expressao = calculoTv.text.toString()
+                val resultadoCalculado = Expression(calculoTv.text.toString()).calculate()
+
+                when{
+                    expressao.endsWith("/0") -> {
+                        Toast.makeText(this@MainActivity, "Não é possível dividir por zero", Toast.LENGTH_LONG).show()
+                        calculoTv.text = ""
+                        resultadoTv.text = ""
+                    }
+
+                    resultadoCalculado.isNaN() -> {
                         Toast.makeText(this@MainActivity, "Expressão inválida", Toast.LENGTH_LONG).show()
                         calculoTv.text = ""
                         resultadoTv.text = ""
-                    }else{
-                        resultadoTv.text = resultadoCalculado.toString()
                     }
+
+                    else -> {resultadoTv.text = resultadoCalculado.toString()}
                 }
             }
         }
