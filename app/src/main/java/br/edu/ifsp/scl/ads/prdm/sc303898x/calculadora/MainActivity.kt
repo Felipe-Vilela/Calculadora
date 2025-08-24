@@ -1,8 +1,10 @@
 package br.edu.ifsp.scl.ads.prdm.sc303898x.calculadora
 
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import br.edu.ifsp.scl.ads.prdm.sc303898x.calculadora.databinding.ActivityMainBinding
+import org.mariuszgromada.math.mxparser.Expression
 
 class MainActivity : AppCompatActivity() {
     private val amb: ActivityMainBinding by lazy { ActivityMainBinding.inflate(layoutInflater)}
@@ -81,8 +83,25 @@ class MainActivity : AppCompatActivity() {
 
             acBt.setOnClickListener {
                 calculoTv.text = ""
+                resultadoTv.text = ""
             }
 
+            resultadoBt.setOnClickListener {
+                if (calculoTv.text.toString().endsWith("/0")){
+                    Toast.makeText(this@MainActivity, "Não é possível dividir por zero", Toast.LENGTH_LONG).show()
+                    calculoTv.text = ""
+                    resultadoTv.text = ""
+                }else{
+                    val resultadoCalculado = Expression(calculoTv.text.toString()).calculate()
+                    if(resultadoCalculado.isNaN()){
+                        Toast.makeText(this@MainActivity, "Expressão inválida", Toast.LENGTH_LONG).show()
+                        calculoTv.text = ""
+                        resultadoTv.text = ""
+                    }else{
+                        resultadoTv.text = resultadoCalculado.toString()
+                    }
+                }
+            }
         }
     }
 }
