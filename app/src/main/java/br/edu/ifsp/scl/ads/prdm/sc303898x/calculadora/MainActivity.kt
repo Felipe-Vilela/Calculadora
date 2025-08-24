@@ -61,20 +61,20 @@ class MainActivity : AppCompatActivity() {
 
 
             divisaoBt.setOnClickListener {
-                calculoTv.append("/")
+                onGeneralOperatorClick('/')
             }
 
 
             multiplicacaoBt.setOnClickListener {
-                calculoTv.append("*")
+                onGeneralOperatorClick('*')
             }
 
             somaBt.setOnClickListener {
-                calculoTv.append("+")
+                onGeneralOperatorClick('+')
             }
 
             subtracaoBt.setOnClickListener {
-                calculoTv.append("-")
+                onMinusOperatorClick()
             }
 
             deleteBt.setOnClickListener {
@@ -106,6 +106,41 @@ class MainActivity : AppCompatActivity() {
                     else -> {resultadoTv.text = resultadoCalculado.toString()}
                 }
             }
+        }
+    }
+
+    private fun onMinusOperatorClick() {
+        val textoAtual = amb.calculoTv.text.toString()
+        val ultimoChar = textoAtual.lastOrNull()
+        val operadorSubstituir = setOf('+')
+        val operadoresComplementar = setOf('*', '/')
+
+        when {
+            ultimoChar == null -> {
+                amb.calculoTv.append("-")
+            }
+            operadorSubstituir.contains(ultimoChar) -> {
+                amb.calculoTv.text = textoAtual.dropLast(1) + "-"
+            }
+            operadoresComplementar.contains(ultimoChar) -> {
+                amb.calculoTv.append("-")
+            }
+            else -> {
+                amb.calculoTv.append("-")
+            }
+        }
+    }
+
+    private fun onGeneralOperatorClick(operadorNovo: Char) {
+        val textoAtual = amb.calculoTv.text.toString()
+        val ultimoChar = textoAtual.lastOrNull()
+        val operadores = setOf('+', '-', '*', '/')
+
+
+        if (ultimoChar != null && operadores.contains(ultimoChar)) {
+            amb.calculoTv.text = textoAtual.dropLast(1) + operadorNovo.toString()
+        } else {
+            amb.calculoTv.append(operadorNovo.toString())
         }
     }
 }
