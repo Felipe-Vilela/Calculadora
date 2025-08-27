@@ -22,23 +22,9 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toTopOf="@id/resultado_tv"
-            android:textSize="35sp"
-            />
-
-        <TextView
-            android:id="@+id/resultado_tv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/off_white"
-            tools:text="15"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/calculo_tv"
             app:layout_constraintBottom_toBottomOf="parent"
             android:textSize="35sp"
             />
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <TableLayout
@@ -60,7 +46,7 @@
             <ImageButton
                 android:id="@+id/delete_bt"
                 android:src="@drawable/baseline_backspace_24"
-                android:background="@color/charcoal_gray"
+                android:background="@color/dark_slate_gray"
                 android:contentDescription="@string/apagar_ultimo_digito"
                 android:textColor="@color/off_white"
                 android:layout_margin="2dp"
@@ -72,7 +58,7 @@
                 android:id="@+id/divisao_bt"
                 android:text="@string/divisao"
                 android:background="@color/vibrant_orange"
-                android:textColor="@color/off_white"
+                android:textColor="@color/charcoal_gray"
                 android:textSize="20sp"
                 android:layout_margin="2dp"
                 android:layout_width="0dp"
@@ -118,7 +104,7 @@
                 android:id="@+id/multiplicacao_bt"
                 android:text="@string/multiplicacao"
                 android:background="@color/vibrant_orange"
-                android:textColor="@color/off_white"
+                android:textColor="@color/charcoal_gray"
                 android:layout_margin="2dp"
                 android:textSize="20sp"
                 android:layout_width="0dp"
@@ -163,7 +149,7 @@
                 android:id="@+id/subtracao_bt"
                 android:text="@string/subtracao"
                 android:background="@color/vibrant_orange"
-                android:textColor="@color/off_white"
+                android:textColor="@color/charcoal_gray"
                 android:textSize="20sp"
                 android:layout_margin="2dp"
                 android:layout_width="0dp"
@@ -209,7 +195,7 @@
                 android:id="@+id/soma_bt"
                 android:text="@string/soma"
                 android:background="@color/vibrant_orange"
-                android:textColor="@color/off_white"
+                android:textColor="@color/charcoal_gray"
                 android:layout_margin="2dp"
                 android:textSize="20sp"
                 android:layout_width="0dp"
@@ -244,7 +230,7 @@
                 android:id="@+id/resultado_bt"
                 android:text="@string/igual"
                 android:background="@color/vibrant_orange"
-                android:textColor="@color/off_white"
+                android:textColor="@color/charcoal_gray"
                 android:layout_margin="2dp"
                 android:textSize="20sp"
                 android:layout_width="0dp"
