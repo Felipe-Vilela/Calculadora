@@ -83,7 +83,6 @@ class MainActivity : AppCompatActivity() {
 
             acBt.setOnClickListener {
                 calculoTv.text = ""
-                resultadoTv.text = ""
             }
 
             resultadoBt.setOnClickListener {
@@ -94,16 +93,14 @@ class MainActivity : AppCompatActivity() {
                     expressao.endsWith("/0") -> {
                         Toast.makeText(this@MainActivity, "Não é possível dividir por zero", Toast.LENGTH_LONG).show()
                         calculoTv.text = ""
-                        resultadoTv.text = ""
                     }
 
                     resultadoCalculado.isNaN() -> {
                         Toast.makeText(this@MainActivity, "Expressão inválida", Toast.LENGTH_LONG).show()
                         calculoTv.text = ""
-                        resultadoTv.text = ""
                     }
 
-                    else -> {resultadoTv.text = resultadoCalculado.toString()}
+                    else -> {calculoTv.text = resultadoCalculado.toString()}
                 }
             }
         }
