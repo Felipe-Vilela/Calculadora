@@ -15,75 +15,24 @@ class MainActivity : AppCompatActivity() {
         with(amb){
             setContentView(root)
 
-            zeroBt.setOnClickListener {
-                calculoTv.append("0")
-            }
+            zeroBt.setOnClickListener { calculoTv.append("0") }
+            umBt.setOnClickListener { calculoTv.append("1") }
+            doisBt.setOnClickListener { calculoTv.append("2") }
+            tresBt.setOnClickListener { calculoTv.append("3") }
+            quatroBt.setOnClickListener { calculoTv.append("4") }
+            cincoBt.setOnClickListener { calculoTv.append("5") }
+            seisBt.setOnClickListener { calculoTv.append("6") }
+            seteBt.setOnClickListener { calculoTv.append("7") }
+            oitoBt.setOnClickListener { calculoTv.append("8") }
+            noveBt.setOnClickListener { calculoTv.append("9") }
 
-            umBt.setOnClickListener {
-                calculoTv.append("1")
-            }
-
-            doisBt.setOnClickListener {
-                calculoTv.append("2")
-            }
-
-            tresBt.setOnClickListener {
-                calculoTv.append("3")
-            }
-
-            quatroBt.setOnClickListener {
-                calculoTv.append("4")
-            }
-
-            cincoBt.setOnClickListener {
-                calculoTv.append("5")
-            }
-
-            seisBt.setOnClickListener {
-                calculoTv.append("6")
-            }
-
-            seteBt.setOnClickListener {
-                calculoTv.append("7")
-            }
-
-            oitoBt.setOnClickListener {
-                calculoTv.append("8")
-            }
-
-            noveBt.setOnClickListener {
-                calculoTv.append("9")
-            }
-
-            pontoBt.setOnClickListener {
-                calculoTv.append(".")
-            }
-
-
-            divisaoBt.setOnClickListener {
-                onGeneralOperatorClick('/')
-            }
-
-
-            multiplicacaoBt.setOnClickListener {
-                onGeneralOperatorClick('*')
-            }
-
-            somaBt.setOnClickListener {
-                onGeneralOperatorClick('+')
-            }
-
-            subtracaoBt.setOnClickListener {
-                onMinusOperatorClick()
-            }
-
-            deleteBt.setOnClickListener {
-                calculoTv.text = calculoTv.text.dropLast(1)
-            }
-
-            acBt.setOnClickListener {
-                calculoTv.text = ""
-            }
+            pontoBt.setOnClickListener { calculoTv.append(".") }
+            divisaoBt.setOnClickListener { onGeneralOperatorClick('/') }
+            multiplicacaoBt.setOnClickListener { onGeneralOperatorClick('*') }
+            somaBt.setOnClickListener { onGeneralOperatorClick('+') }
+            subtracaoBt.setOnClickListener { onMinusOperatorClick() }
+            deleteBt.setOnClickListener { calculoTv.text = calculoTv.text.dropLast(1) }
+            acBt.setOnClickListener { calculoTv.text = "" }
 
             resultadoBt.setOnClickListener {
                 val expressao = calculoTv.text.toString()
@@ -108,36 +57,28 @@ class MainActivity : AppCompatActivity() {
 
     private fun onMinusOperatorClick() {
         val textoAtual = amb.calculoTv.text.toString()
-        val ultimoChar = textoAtual.lastOrNull()
-        val operadorSubstituir = setOf('+')
-        val operadoresComplementar = setOf('*', '/')
+        if (textoAtual.isEmpty()) {
+            amb.calculoTv.append("-")
+            return
+        }
 
-        when {
-            ultimoChar == null -> {
+        val ultimoChar = textoAtual.last()
+        if ("+-*/".contains(ultimoChar)) {
+            if (textoAtual.endsWith("*") || textoAtual.endsWith("/")) {
                 amb.calculoTv.append("-")
-            }
-            operadorSubstituir.contains(ultimoChar) -> {
+            } else {
                 amb.calculoTv.text = textoAtual.dropLast(1) + "-"
             }
-            operadoresComplementar.contains(ultimoChar) -> {
-                amb.calculoTv.append("-")
-            }
-            else -> {
-                amb.calculoTv.append("-")
-            }
+        } else {
+            amb.calculoTv.append("-")
         }
     }
 
     private fun onGeneralOperatorClick(operadorNovo: Char) {
         val textoAtual = amb.calculoTv.text.toString()
-        val ultimoChar = textoAtual.lastOrNull()
-        val operadores = setOf('+', '-', '*', '/')
 
+        val textoSemOperadoresFinais = textoAtual.replace(Regex("[+\\-*/]+$"), "")
 
-        if (ultimoChar != null && operadores.contains(ultimoChar)) {
-            amb.calculoTv.text = textoAtual.dropLast(1) + operadorNovo.toString()
-        } else {
-            amb.calculoTv.append(operadorNovo.toString())
-        }
+        amb.calculoTv.text = textoSemOperadoresFinais + operadorNovo
     }
 }
