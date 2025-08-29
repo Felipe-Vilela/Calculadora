@@ -27,10 +27,10 @@ class MainActivity : AppCompatActivity() {
             noveBt.setOnClickListener { calculoTv.append("9") }
 
             pontoBt.setOnClickListener { calculoTv.append(".") }
-            divisaoBt.setOnClickListener { onGeneralOperatorClick('/') }
-            multiplicacaoBt.setOnClickListener { onGeneralOperatorClick('*') }
-            somaBt.setOnClickListener { onGeneralOperatorClick('+') }
-            subtracaoBt.setOnClickListener { onMinusOperatorClick() }
+            divisaoBt.setOnClickListener { onOperatorClick('/') }
+            multiplicacaoBt.setOnClickListener { onOperatorClick('*') }
+            somaBt.setOnClickListener { onOperatorClick('+') }
+            subtracaoBt.setOnClickListener { onOperatorClick('-') }
             deleteBt.setOnClickListener { calculoTv.text = calculoTv.text.dropLast(1) }
             acBt.setOnClickListener { calculoTv.text = "" }
 
@@ -55,30 +55,54 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun onMinusOperatorClick() {
-        val textoAtual = amb.calculoTv.text.toString()
-        if (textoAtual.isEmpty()) {
-            amb.calculoTv.append("-")
+    private fun onOperatorClick(novoOperador: Char) {
+        val text = amb.calculoTv.text.toString()
+        if (text.isEmpty()) {
+            if (novoOperador == '-') amb.calculoTv.append("-")
+            return
+        }
+        if (text.length == 1 && text[0] == '-') {
+            if (novoOperador == '-') return
             return
         }
 
-        val ultimoChar = textoAtual.last()
-        if ("+-*/".contains(ultimoChar)) {
-            if (textoAtual.endsWith("*") || textoAtual.endsWith("/")) {
-                amb.calculoTv.append("-")
-            } else {
-                amb.calculoTv.text = textoAtual.dropLast(1) + "-"
+        val ultimoChar = text.last()
+        val isOperador = { c: Char -> c == '+' || c == '-' || c == '*' || c == '/' }
+
+        if (text.length >= 2) {
+            val penult = text[text.length - 2]
+            if ((penult == '+' || penult == '*' || penult == '/') && ultimoChar == '-') {
+                when (novoOperador) {
+                    '-' -> {
+                        return
+                    }
+                    '+' -> {
+                        amb.calculoTv.text = text.dropLast(1) // "/-" -> "/"
+                        return
+                    }
+                    '*', '/' -> {
+                        amb.calculoTv.text = text.dropLast(2) + novoOperador
+                        return
+                    }
+                }
             }
-        } else {
-            amb.calculoTv.append("-")
         }
-    }
 
-    private fun onGeneralOperatorClick(operadorNovo: Char) {
-        val textoAtual = amb.calculoTv.text.toString()
-
-        val textoSemOperadoresFinais = textoAtual.replace(Regex("[+\\-*/]+$"), "")
-
-        amb.calculoTv.text = textoSemOperadoresFinais + operadorNovo
+        if (isOperador(ultimoChar)) {
+            when (novoOperador) {
+                '-' -> {
+                    if (ultimoChar == '*' || ultimoChar == '/') {
+                        amb.calculoTv.text = text + "-"
+                    } else {
+                        amb.calculoTv.text = text.dropLast(1) + "-"
+                    }
+                }
+                else -> {
+                    amb.calculoTv.text = text.dropLast(1) + novoOperador
+                }
+            }
+            return
+        }
+        amb.calculoTv.append(novoOperador.toString())
     }
 }
